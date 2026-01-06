@@ -1,0 +1,30 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.sublime-*
+
+# Node
+node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+.env
+.venv/
+venv/
+
+# Logs
+*.log
+
+# Local plugin settings
+*.local.md
+
+# Claude Code local settings
+.claude/

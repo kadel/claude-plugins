@@ -1,0 +1,30 @@
+{
+  "name": "claude-plugins",
+  "owner": {
+    "name": "Tomas Kral",
+    "email": "tomas.kral@gmail.com"
+  },
+  "metadata": {
+    "description": "A collection of Claude Code plugins",
+    "version": "0.1.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "worktree-feature",
+      "source": "worktree-feature",
+      "description": "Start new feature development in a separate git worktree",
+      "version": "0.1.0",
+      "author": {
+        "name": "Tomas Kral",
+        "email": "tomas.kral@gmail.com"
+      },
+      "repository": "https://github.com/kadel/claude-plugins",
+      "license": "MIT",
+      "keywords": ["git", "worktree", "feature", "workflow"],
+      "category": "workflow",
+      "tags": ["git", "branching", "development"],
+      "strict": false
+    }
+  ]
+}
