@@ -17,7 +17,7 @@ A collection of Claude Code plugins.
 ### Local Development
 
 ```bash
-cc --plugin-dir ./plugins/worktree-feature
+claude --plugin-dir ./plugins/worktree-feature
 ```
 
 ## Available Plugins
