@@ -25,6 +25,22 @@
       "category": "workflow",
       "tags": ["git", "branching", "development"],
       "strict": false
+    },
+    {
+      "name": "rhdh-plugin-dev",
+      "source": "rhdh-plugin-dev",
+      "description": "Bootstrap and develop backend dynamic plugins for Red Hat Developer Hub (RHDH/Backstage). Frontend plugins covered separately.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Tomas Kral",
+        "email": "tomas.kral@gmail.com"
+      },
+      "repository": "https://github.com/kadel/claude-plugins",
+      "license": "MIT",
+      "keywords": ["rhdh", "backstage", "dynamic-plugin", "red-hat", "developer-hub"],
+      "category": "development",
+      "tags": ["rhdh", "backstage", "plugin", "backend"],
+      "strict": false
     }
   ]
 }
