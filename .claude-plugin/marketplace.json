@@ -1,5 +1,5 @@
 {
-  "name": "claude-plugins",
+  "name": "kadel-plugins",
   "owner": {
     "name": "Tomas Kral",
     "email": "tomas.kral@gmail.com"
@@ -12,7 +12,7 @@
   "plugins": [
     {
       "name": "worktree-feature",
-      "source": "worktree-feature",
+      "source": "./worktree-feature",
       "description": "Start new feature development in a separate git worktree",
       "version": "0.1.0",
       "author": {
@@ -28,7 +28,7 @@
     },
     {
       "name": "rhdh-plugin-dev",
-      "source": "rhdh-plugin-dev",
+      "source": "./rhdh-plugin-dev",
       "description": "Bootstrap and develop backend dynamic plugins for Red Hat Developer Hub (RHDH/Backstage). Frontend plugins covered separately.",
       "version": "0.1.0",
       "author": {
