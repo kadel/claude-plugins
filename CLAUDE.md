@@ -10,7 +10,8 @@ claude-plugins/
 │   └── marketplace.json      # Plugin registry configuration
 ├── plugins/
 │   ├── worktree-feature/     # Git worktree workflow plugin
-│   └── rhdh-plugin-dev/      # RHDH dynamic plugin development
+│   ├── rhdh-plugin-dev/      # RHDH dynamic plugin development
+│   └── jira-utils/           # Jira CLI utilities
 ├── CLAUDE.md                 # This file
 └── README.md                 # User-facing documentation
 ```
@@ -53,6 +54,10 @@ Red Hat Developer Hub (RHDH) dynamic plugin development:
 - **rhdh-backend-dynamic-plugin**: Backend plugins, scaffolder actions, processors
 - **rhdh-frontend-dynamic-plugin**: Frontend plugins, UI components, themes
 - **generate-frontend-wiring**: Analyze existing plugins and generate RHDH wiring configuration
+
+### jira-utils
+Jira CLI utilities for issue and project management:
+- **use-jira-cli**: Interact with Jira issues, sprints, epics using the `jira` CLI (non-interactive mode only)
 
 ## Testing Plugins Locally
 

@@ -13,6 +13,7 @@ A collection of Claude Code plugins for development workflows.
 # Install a plugin
 /plugin install worktree-feature@claude-plugins
 /plugin install rhdh-plugin-dev@claude-plugins
+/plugin install jira-utils@claude-plugins
 ```
 
 ### Local Development
@@ -20,6 +21,7 @@ A collection of Claude Code plugins for development workflows.
 ```bash
 claude --plugin-dir ./plugins/worktree-feature
 claude --plugin-dir ./plugins/rhdh-plugin-dev
+claude --plugin-dir ./plugins/jira-utils
 ```
 
 ## Available Plugins
@@ -99,6 +101,29 @@ Analyze an existing Backstage frontend plugin and generate the RHDH dynamic plug
 
 ---
 
+### jira-utils
+
+Interact with Jira using the Jira CLI from the command line.
+
+**Skills:**
+- **Use Jira CLI** - Manage Jira issues, sprints, epics, and projects using the `jira` CLI tool.
+
+**Usage:**
+- "List Jira issues"
+- "Create Jira issue"
+- "View issue PROJ-123"
+- "Move issue to Done"
+- "Show current sprint"
+- "Assign issue to me"
+
+**Prerequisites:**
+- Jira CLI installed (`jira` command)
+- Configured with `jira init` and `JIRA_API_TOKEN`
+
+**Note:** Always uses non-interactive mode (`--plain` or `--raw`) to avoid hanging.
+
+---
+
 ## Plugin Structure
 
 ```
@@ -107,30 +132,34 @@ plugins/
 │   └── skills/
 │       └── worktree-feature/
 │           └── SKILL.md
-└── rhdh-plugin-dev/
+├── rhdh-plugin-dev/
+│   └── skills/
+│       ├── rhdh-backend-dynamic-plugin/
+│       │   ├── SKILL.md
+│       │   ├── references/
+│       │   │   ├── versions.md
+│       │   │   ├── export-guide.md
+│       │   │   ├── packaging-guide.md
+│       │   │   └── debugging.md
+│       │   └── examples/
+│       │       └── dynamic-plugins.yaml
+│       ├── rhdh-frontend-dynamic-plugin/
+│       │   ├── SKILL.md
+│       │   ├── references/
+│       │   │   ├── frontend-wiring.md
+│       │   │   ├── scalprum-config.md
+│       │   │   └── entity-page.md
+│       │   └── examples/
+│       │       └── frontend-plugin-config.yaml
+│       └── generate-frontend-wiring/
+│           ├── SKILL.md
+│           └── references/
+│               ├── frontend-wiring.md
+│               └── entity-page.md
+└── jira-utils/
     └── skills/
-        ├── rhdh-backend-dynamic-plugin/
-        │   ├── SKILL.md
-        │   ├── references/
-        │   │   ├── versions.md
-        │   │   ├── export-guide.md
-        │   │   ├── packaging-guide.md
-        │   │   └── debugging.md
-        │   └── examples/
-        │       └── dynamic-plugins.yaml
-        ├── rhdh-frontend-dynamic-plugin/
-        │   ├── SKILL.md
-        │   ├── references/
-        │   │   ├── frontend-wiring.md
-        │   │   ├── scalprum-config.md
-        │   │   └── entity-page.md
-        │   └── examples/
-        │       └── frontend-plugin-config.yaml
-        └── generate-frontend-wiring/
-            ├── SKILL.md
-            └── references/
-                ├── frontend-wiring.md
-                └── entity-page.md
+        └── use-jira-cli/
+            └── SKILL.md
 ```
 
 ## Adding New Plugins

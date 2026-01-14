@@ -41,6 +41,22 @@
       "category": "development",
       "tags": ["rhdh", "backstage", "plugin", "backend"],
       "strict": false
+    },
+    {
+      "name": "jira-utils",
+      "source": "./plugins/jira-utils",
+      "description": "Use Jira CLI to interact with Jira issues, sprints, epics, and projects from the command line.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Tomas Kral",
+        "email": "tomas.kral@gmail.com"
+      },
+      "repository": "https://github.com/kadel/claude-plugins",
+      "license": "MIT",
+      "keywords": ["jira", "cli", "issues", "project-management", "atlassian"],
+      "category": "workflow",
+      "tags": ["jira", "issues", "agile", "project-management"],
+      "strict": false
     }
   ]
 }
