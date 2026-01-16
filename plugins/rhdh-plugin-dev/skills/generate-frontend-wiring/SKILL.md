@@ -1,7 +1,7 @@
 ---
 name: Generate Frontend Wiring
 description: This skill should be used when the user asks to "generate frontend wiring", "show frontend wiring", "create RHDH binding", "generate dynamic plugin config", "show plugin wiring for RHDH", "create app-config for frontend plugin", or wants to generate the RHDH dynamic plugin wiring configuration for an existing Backstage frontend plugin. The skill analyzes the plugin's source code and generates the appropriate configuration.
-version: 0.1.0
+version: 0.2.0
 ---
 
 ## Purpose
@@ -28,7 +28,7 @@ The plugin directory must contain:
 
 Find and read the essential plugin files:
 
-1. **`package.json`** - Get package name and scalprum configuration
+1. **`package.json`** - Get package name
 2. **`src/plugin.ts`** - Find exported extensions (pages, cards)
 3. **`src/index.ts`** - Find public exports (APIs, components)
 4. **`dist-dynamic/dist-scalprum/plugin-manifest.json`** - Get scalprum name if built

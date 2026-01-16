@@ -1,7 +1,7 @@
 ---
 name: RHDH Frontend Dynamic Plugin Bootstrap
 description: This skill should be used when the user asks to "create RHDH frontend plugin", "bootstrap frontend dynamic plugin", "create UI plugin for RHDH", "new frontend plugin for Red Hat Developer Hub", "add entity card to RHDH", "create dynamic route", "add sidebar menu item", "configure mount points", "create theme plugin", or mentions creating frontend components, UI pages, entity cards, or visual customizations for Red Hat Developer Hub or RHDH. This skill is specifically for frontend plugins - for backend plugins, use the separate backend plugin skill.
-version: 0.1.0
+version: 0.2.0
 ---
 
 ## Purpose
@@ -68,18 +68,41 @@ cd <app-name>
 yarn install
 ```
 
+(you can create backstage app in the current directory by specifying `--path .`)
+
+## Step 3: Decide if you want to use RHDH themes. 
+
+If you want to use RHDH themes, follow the steps below. If you don't want to use RHDH themes, skip to Step 4.
+
+Add RHDH theme to Backstage app dependencies:
+
+```bash
+yarn workspace app add @red-hat-developer-hub/backstage-plugin-theme
+```
+
+Update `packages/app/src/App.tsx` and apply the themes to `createApp`:
+
+```typescript
+import { getThemes } from '@red-hat-developer-hub/backstage-plugin-theme';
+
+// ...
+
+const app = createApp({
+  apis,
+  // ...
+  themes: getThemes(),
+});
+```
+
 ## Step 3: Create Frontend Plugin
 
 Generate a new frontend plugin:
 
 ```bash
-yarn new
+yarn new --select frontend-plugin --option id=<plugin-id>
 ```
 
-When prompted:
-1. Select **"plugin"** (not backend-plugin)
-2. Enter a plugin ID (e.g., `my-plugin`)
-3. The plugin will be created at `plugins/<plugin-id>/`
+The plugin will be created at `plugins/<plugin-id>/`
 
 Generated structure:
 
@@ -96,7 +119,49 @@ plugins/<plugin-id>/
     └── index.tsx             # Development harness
 ```
 
-## Step 4: Implement Plugin Components
+
+## Step 4: If you decided to use RHDH themes, add RHDH Theme to Development Harness
+
+By default, `yarn start` uses standard Backstage themes. To preview your plugin with RHDH styling during local development, configure the RHDH theme package.
+
+### Install Theme Package
+
+```bash
+cd plugins/<plugin-id>
+yarn add @red-hat-developer-hub/backstage-plugin-theme
+```
+
+### Configure Development Harness
+
+Update `dev/index.tsx` to use RHDH themes:
+
+```typescript
+import { getAllThemes } from '@red-hat-developer-hub/backstage-plugin-theme';
+import { createDevApp } from '@backstage/dev-utils';
+import { myPlugin, MyPage } from '../src';
+
+createDevApp()
+  .registerPlugin(myPlugin)
+  .addPage({
+    element: <MyPage />,
+    title: 'My Plugin',
+    path: '/my-plugin',
+  })
+  .addThemes(getAllThemes())
+  .render();
+```
+
+### Available Theme APIs
+
+- `getThemes()` / `useThemes()` - Latest RHDH light and dark themes
+- `getAllThemes()` / `useAllThemes()` - All themes including legacy versions
+- `useLoaderTheme()` - Returns Material-UI v5 theme object
+
+> **Note:** When deployed to RHDH, the application shell provides theming automatically. This configuration is only needed for local development.
+
+
+
+## Step 5: Implement Plugin Components
 
 ### Page Component
 
@@ -154,43 +219,6 @@ Build and verify:
 cd plugins/<plugin-id>
 yarn build
 ```
-
-## Step 5: Configure Scalprum
-
-Scalprum handles module federation for dynamic loading. Add configuration to `package.json`:
-
-```json
-{
-  "name": "@my-org/plugin-my-plugin",
-  "scalprum": {
-    "name": "my-org.plugin-my-plugin",
-    "exposedModules": {
-      "PluginRoot": "./src/index.ts"
-    }
-  }
-}
-```
-
-Key points:
-- `name`: Webpack container name (used in `pluginConfig.dynamicPlugins.frontend`)
-- `exposedModules`: Entry points exposed for dynamic loading
-- `PluginRoot` is the default module name
-
-For multiple entry points:
-
-```json
-{
-  "scalprum": {
-    "name": "my-org.plugin-my-plugin",
-    "exposedModules": {
-      "PluginRoot": "./src/index.ts",
-      "EntityCards": "./src/components/cards.ts"
-    }
-  }
-}
-```
-
-See `references/scalprum-config.md` for advanced configuration.
 
 ## Step 6: Export as Dynamic Plugin
 
@@ -373,7 +401,6 @@ Frontend plugins can be debugged in browser DevTools:
 ### Reference Files
 
 - **`references/frontend-wiring.md`** - Complete mount points, routes, bindings
-- **`references/scalprum-config.md`** - Advanced Scalprum configuration
 - **`references/entity-page.md`** - Entity page customization
 
 ### Example Files

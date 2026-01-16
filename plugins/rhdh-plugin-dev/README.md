@@ -44,7 +44,6 @@ Bootstrap and develop frontend dynamic plugins for RHDH.
 - "Create theme plugin"
 
 **What it covers:**
-- Scalprum module federation configuration
 - Dynamic routes and full-page plugins
 - Entity page mount points and cards
 - Sidebar menu items and icons
@@ -54,7 +53,6 @@ Bootstrap and develop frontend dynamic plugins for RHDH.
 
 **Reference files:**
 - `references/frontend-wiring.md` - Complete wiring reference
-- `references/scalprum-config.md` - Module federation setup
 - `references/entity-page.md` - Entity page customization
 
 ---
@@ -113,14 +111,11 @@ yarn new  # Select "plugin"
 # 3. Implement React components
 # Edit plugins/<plugin-id>/src/
 
-# 4. Configure Scalprum in package.json
-# Add scalprum.name and scalprum.exposedModules
-
-# 5. Export as dynamic plugin
+# 4. Export as dynamic plugin
 cd plugins/<plugin-id>
 npx @red-hat-developer-hub/cli@latest plugin export
 
-# 6. Package and configure wiring
+# 5. Package and configure wiring
 npx @red-hat-developer-hub/cli@latest plugin package \
   --tag quay.io/<namespace>/<plugin>:v0.1.0
 ```
