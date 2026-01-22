@@ -1,7 +1,6 @@
 ---
 name: Generate Frontend Wiring
 description: This skill should be used when the user asks to "generate frontend wiring", "show frontend wiring", "create RHDH binding", "generate dynamic plugin config", "show plugin wiring for RHDH", "create app-config for frontend plugin", or wants to generate the RHDH dynamic plugin wiring configuration for an existing Backstage frontend plugin. The skill analyzes the plugin's source code and generates the appropriate configuration.
-version: 0.2.0
 ---
 
 ## Purpose
@@ -106,6 +105,7 @@ Show the generated configuration with:
 1. The YAML configuration block
 2. A table explaining each entry and its source
 3. Notes about any optional configurations
+4. Ask if it should be saved to a file
 
 ## Example Output
 

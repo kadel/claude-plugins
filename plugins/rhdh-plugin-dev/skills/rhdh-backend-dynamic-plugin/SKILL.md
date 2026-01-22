@@ -1,7 +1,6 @@
 ---
 name: RHDH Backend Dynamic Plugin Bootstrap
 description: This skill should be used when the user asks to "create RHDH backend plugin", "bootstrap backend dynamic plugin", "create backstage backend plugin for RHDH", "new backend plugin for Red Hat Developer Hub", "create dynamic backend plugin", "scaffold RHDH backend plugin", "new scaffolder action", "create catalog processor", or mentions creating a new backend plugin, backend module, or server-side functionality for Red Hat Developer Hub or RHDH. This skill is specifically for backend plugins - for frontend plugins, use the separate frontend plugin skill.
-version: 0.1.0
 ---
 
 ## Purpose
