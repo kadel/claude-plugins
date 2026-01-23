@@ -30,7 +30,7 @@
       "name": "rhdh-plugin-dev",
       "source": "./plugins/rhdh-plugin-dev",
       "description": "Bootstrap and develop backend dynamic plugins for Red Hat Developer Hub (RHDH/Backstage). Frontend plugins covered separately.",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "author": {
         "name": "Tomas Kral",
         "email": "tomas.kral@gmail.com"
