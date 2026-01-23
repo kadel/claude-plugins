@@ -24,6 +24,19 @@ claude --plugin-dir ./plugins/rhdh-plugin-dev
 claude --plugin-dir ./plugins/jira-utils
 ```
 
+### Cursor
+
+Copy skills to Cursor's personal skills directory:
+
+```bash
+./scripts/copy-skills-to-cursor.sh          # Copy all skills
+./scripts/copy-skills-to-cursor.sh --force  # Overwrite existing skills
+./scripts/copy-skills-to-cursor.sh --clean  # Remove copied skills
+./scripts/copy-skills-to-cursor.sh --dry-run # Preview changes
+```
+
+Skills are copied to `~/.cursor/skills/`.
+
 ## Available Plugins
 
 ### worktree-feature
