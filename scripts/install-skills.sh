@@ -2,7 +2,7 @@
 #
 # Install skills from this repository to AI coding assistants
 # Supported targets: Cursor, Claude Code, GitHub Copilot
-# Usage: ./scripts/install-skills.sh [--target <target>] [--dry-run] [--force] [--clean]
+# Usage: ./scripts/install-skills.sh [--target <target>] [--skill <name>] [--dry-run] [--force] [--clean]
 #
 
 set -euo pipefail
@@ -11,7 +11,9 @@ set -euo pipefail
 DRY_RUN=false
 FORCE=false
 CLEAN=false
+LIST_SKILLS=false
 TARGETS=()
+SELECTED_SKILLS=()
 
 # Target directories
 CURSOR_SKILLS_DIR="${HOME}/.cursor/skills"
@@ -31,6 +33,17 @@ while [[ $# -gt 0 ]]; do
             fi
             shift
             ;;
+        --skill)
+            if [[ -n "${2:-}" && ! "${2:-}" =~ ^- ]]; then
+                SELECTED_SKILLS+=("$2")
+                shift
+            else
+                echo "Error: --skill requires a skill name"
+                exit 1
+            fi
+            shift
+            ;;
+        --list) LIST_SKILLS=true; shift ;;
         --dry-run) DRY_RUN=true; shift ;;
         --force) FORCE=true; shift ;;
         --clean) CLEAN=true; shift ;;
@@ -41,6 +54,8 @@ while [[ $# -gt 0 ]]; do
             echo ""
             echo "Options:"
             echo "  --target <name>  Target assistant: cursor, claude, copilot, or all (default: all)"
+            echo "  --skill <name>   Install only specific skill(s). Can be used multiple times."
+            echo "  --list           List available skills and exit"
             echo "  --dry-run        Show what would be done without making changes"
             echo "  --force          Overwrite existing skills"
             echo "  --clean          Remove skills created by this script"
@@ -50,6 +65,12 @@ while [[ $# -gt 0 ]]; do
             echo "  Cursor:  ${CURSOR_SKILLS_DIR}"
             echo "  Claude:  ${CLAUDE_SKILLS_DIR}"
             echo "  Copilot: ${COPILOT_SKILLS_DIR}"
+            echo ""
+            echo "Examples:"
+            echo "  $0 --list                          # List available skills"
+            echo "  $0 --skill worktree-feature        # Install only worktree-feature"
+            echo "  $0 --skill use-jira-cli --skill backstage-cr  # Install multiple skills"
+            echo "  $0 --target cursor --skill use-jira-cli       # Install to Cursor only"
             exit 0
             ;;
         *)
@@ -99,6 +120,47 @@ done < <(find "${REPO_ROOT}/plugins" -type f -name "SKILL.md" -path "*/skills/*"
 if [[ ${#SKILLS[@]} -eq 0 ]]; then
     echo "No skills found in ${REPO_ROOT}/plugins/*/skills/*/"
     exit 0
+fi
+
+# List mode - show available skills and exit
+if [[ "${LIST_SKILLS}" == true ]]; then
+    echo "Available skills:"
+    for skill_path in "${SKILLS[@]}"; do
+        echo "  - $(basename "${skill_path}")"
+    done
+    exit 0
+fi
+
+# Filter skills if --skill was specified
+if [[ ${#SELECTED_SKILLS[@]} -gt 0 ]]; then
+    FILTERED_SKILLS=()
+    for skill_path in "${SKILLS[@]}"; do
+        skill_name=$(basename "${skill_path}")
+        for selected in "${SELECTED_SKILLS[@]}"; do
+            if [[ "${skill_name}" == "${selected}" ]]; then
+                FILTERED_SKILLS+=("${skill_path}")
+                break
+            fi
+        done
+    done
+
+    # Check for invalid skill names
+    for selected in "${SELECTED_SKILLS[@]}"; do
+        found=false
+        for skill_path in "${SKILLS[@]}"; do
+            if [[ "$(basename "${skill_path}")" == "${selected}" ]]; then
+                found=true
+                break
+            fi
+        done
+        if [[ "${found}" == false ]]; then
+            echo "Error: Unknown skill '${selected}'"
+            echo "Use --list to see available skills"
+            exit 1
+        fi
+    done
+
+    SKILLS=("${FILTERED_SKILLS[@]}")
 fi
 
 echo "Found ${#SKILLS[@]} skill(s):"
