@@ -24,18 +24,29 @@ claude --plugin-dir ./plugins/rhdh-plugin-dev
 claude --plugin-dir ./plugins/jira-utils
 ```
 
-### Cursor
+### Install Skills Locally
 
-Copy skills to Cursor's personal skills directory:
+Install skills to your local AI assistant (Cursor, Claude Code, GitHub Copilot):
 
 ```bash
-./scripts/copy-skills-to-cursor.sh          # Copy all skills
-./scripts/copy-skills-to-cursor.sh --force  # Overwrite existing skills
-./scripts/copy-skills-to-cursor.sh --clean  # Remove copied skills
-./scripts/copy-skills-to-cursor.sh --dry-run # Preview changes
+# Install to all supported assistants
+./scripts/install-skills.sh
+
+# Install to a specific assistant
+./scripts/install-skills.sh --target cursor
+./scripts/install-skills.sh --target claude
+./scripts/install-skills.sh --target copilot
+
+# Options
+./scripts/install-skills.sh --force    # Overwrite existing skills
+./scripts/install-skills.sh --clean    # Remove installed skills
+./scripts/install-skills.sh --dry-run  # Preview changes
 ```
 
-Skills are copied to `~/.cursor/skills/`.
+Skills are installed to:
+- Cursor: `~/.cursor/skills/`
+- Claude: `~/.claude/skills/`
+- Copilot: `~/.copilot/skills/`
 
 ## Available Plugins
 
