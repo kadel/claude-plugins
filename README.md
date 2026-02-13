@@ -12,6 +12,8 @@ A collection of Claude Code plugins for development workflows.
 
 /plugin install worktree-feature@claude-plugins
 /plugin install rhdh-plugin-dev@claude-plugins
+/plugin install rhdh-context@claude-plugins
+/plugin install review@claude-plugins
 /plugin install jira-utils@claude-plugins
 ```
 
@@ -19,6 +21,8 @@ A collection of Claude Code plugins for development workflows.
 ```bash
 claude --plugin-dir ./plugins/worktree-feature
 claude --plugin-dir ./plugins/rhdh-plugin-dev
+claude --plugin-dir ./plugins/rhdh-context
+claude --plugin-dir ./plugins/review
 claude --plugin-dir ./plugins/jira-utils
 ```
 
@@ -58,6 +62,8 @@ Skills are installed to `~/.copilot/skills/`
 | [rhdh-frontend-dynamic-plugin](plugins/rhdh-plugin-dev/skills/rhdh-frontend-dynamic-plugin/SKILL.md) | Bootstrap frontend dynamic plugins for RHDH |
 | [generate-frontend-wiring](plugins/rhdh-plugin-dev/skills/generate-frontend-wiring/SKILL.md) | Generate RHDH wiring config for Backstage frontend plugins |
 | [backstage-cr](plugins/rhdh-plugin-dev/skills/backstage-cr/SKILL.md) | Create and configure Backstage Custom Resources for rhdh-operator |
+| [rhdh-context](plugins/rhdh-context/skills/rhdh-context/SKILL.md) | RHDH product context — what it is, how it differs from Backstage, key nuances |
+| [documentation](plugins/review/skills/documentation/SKILL.md) | Review documentation changes in GitHub PRs for clarity and correctness |
 
 ## License
 

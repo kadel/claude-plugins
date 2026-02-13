@@ -11,6 +11,8 @@ claude-plugins/
 ├── plugins/
 │   ├── worktree-feature/     # Git worktree workflow plugin
 │   ├── rhdh-plugin-dev/      # RHDH dynamic plugin development
+│   ├── rhdh-context/         # RHDH product context and nuances
+│   ├── review/               # Documentation review for PRs
 │   └── jira-utils/           # Jira CLI utilities
 ├── CLAUDE.md                 # This file
 └── README.md                 # User-facing documentation
@@ -54,6 +56,14 @@ Red Hat Developer Hub (RHDH) dynamic plugin development:
 - **rhdh-backend-dynamic-plugin**: Backend plugins, scaffolder actions, processors
 - **rhdh-frontend-dynamic-plugin**: Frontend plugins, UI components, themes
 - **generate-frontend-wiring**: Analyze existing plugins and generate RHDH wiring configuration
+
+### rhdh-context
+RHDH product context and background knowledge:
+- **rhdh-context**: What RHDH is, how it differs from Backstage, dynamic plugins, deployment model, version compatibility, and common nuances
+
+### review
+Documentation review for pull requests:
+- **documentation**: Review documentation changes in GitHub PRs for clarity and technical correctness
 
 ### jira-utils
 Jira CLI utilities for issue and project management:
