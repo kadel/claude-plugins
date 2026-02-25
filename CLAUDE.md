@@ -13,6 +13,7 @@ claude-plugins/
 │   ├── rhdh-plugin-dev/      # RHDH dynamic plugin development
 │   ├── rhdh-context/         # RHDH product context and nuances
 │   ├── review/               # Documentation review for PRs
+│   ├── git-commit/           # Git commit workflow
 │   └── jira-utils/           # Jira CLI utilities
 ├── CLAUDE.md                 # This file
 └── README.md                 # User-facing documentation
@@ -64,6 +65,10 @@ RHDH product context and background knowledge:
 ### review
 Documentation review for pull requests:
 - **documentation**: Review documentation changes in GitHub PRs for clarity and technical correctness
+
+### git-commit
+Git commit workflow:
+- **git-commit**: Create well-structured git commits with meaningful messages, proper attribution, and sign-off
 
 ### jira-utils
 Jira CLI utilities for issue and project management:
