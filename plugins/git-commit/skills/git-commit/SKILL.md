@@ -54,7 +54,29 @@ Create a concise commit message following these guidelines:
 - **Focus on "why"**: Explain the purpose rather than describing the code changes
 - **Keep it brief**: 1-2 sentences for simple changes
 
-Examples of good commit messages:
+### Conventional Commits
+
+If the recent commit history follows the [Conventional Commits](https://www.conventionalcommits.org/) format, the generated commit message must also follow that format. Conventional Commits use this structure:
+
+```
+<type>[(optional scope)]: <description>
+```
+
+Common types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `ci`, `build`, `perf`.
+
+Examples:
+- `feat(auth): add OAuth2 login support`
+- `fix: resolve race condition in connection pooling`
+- `docs(readme): update installation instructions`
+- `refactor(db): simplify query builder logic`
+- `chore: bump dependency versions`
+
+Look at the output of `git log --oneline -10` from Step 1. If the majority of recent commits use the `type:` or `type(scope):` prefix pattern, adopt the same format for the new commit message.
+
+### Standard Commit Messages
+
+If the commit history does not follow Conventional Commits, use a standard imperative format:
+
 - `Add validation for user email input`
 - `Fix race condition in connection pooling`
 - `Update authentication flow to support OAuth2`
