@@ -26,30 +26,26 @@ claude --plugin-dir ./plugins/review
 claude --plugin-dir ./plugins/jira-utils
 ```
 
-### Cursor
+### Install individual skills
+
+Install skills directly using [skillmanager](https://github.com/kadel/skillmanager):
 
 ```bash
-./scripts/install-skills.sh --target cursor
+npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/worktree-feature/skills/worktree-feature
+npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/jira-utils/skills/use-jira-cli
+npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/rhdh-plugin-dev/skills/rhdh-backend-dynamic-plugin
+npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/rhdh-plugin-dev/skills/rhdh-frontend-dynamic-plugin
+npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/rhdh-plugin-dev/skills/generate-frontend-wiring
+npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/rhdh-plugin-dev/skills/backstage-cr
+npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/rhdh-context/skills/rhdh-context
+npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/review/skills/documentation
+npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/git-commit/skills/git-commit
 ```
 
-Skills are installed to `~/.cursor/skills/`
-
-### GitHub Copilot
+Update all installed skills:
 
 ```bash
-./scripts/install-skills.sh --target copilot
-```
-
-Skills are installed to `~/.copilot/skills/`
-
-### Script Options
-
-```bash
-./scripts/install-skills.sh --list                     # List available skills
-./scripts/install-skills.sh --skill worktree-feature   # Install specific skill(s)
-./scripts/install-skills.sh --force                    # Overwrite existing skills
-./scripts/install-skills.sh --clean                    # Remove installed skills
-./scripts/install-skills.sh --dry-run                  # Preview changes
+npx @tomaskral/skillmanager@latest update --all
 ```
 
 ## Skills
@@ -64,6 +60,7 @@ Skills are installed to `~/.copilot/skills/`
 | [backstage-cr](plugins/rhdh-plugin-dev/skills/backstage-cr/SKILL.md) | Create and configure Backstage Custom Resources for rhdh-operator |
 | [rhdh-context](plugins/rhdh-context/skills/rhdh-context/SKILL.md) | RHDH product context — what it is, how it differs from Backstage, key nuances |
 | [documentation](plugins/review/skills/documentation/SKILL.md) | Review documentation changes in GitHub PRs for clarity and correctness |
+| [git-commit](plugins/git-commit/skills/git-commit/SKILL.md) | Create well-structured git commits with meaningful messages and attribution |
 
 ## License
 
