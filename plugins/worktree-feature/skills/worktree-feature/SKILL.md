@@ -1,5 +1,5 @@
 ---
-name: Worktree Feature Development
+name: worktree-feature-development
 description: This skill should be used when the user asks to "start a new feature", "create feature branch in worktree", "set up isolated feature development", "work on feature in separate directory", or mentions git worktree for feature isolation.
 version: 0.1.0
 ---

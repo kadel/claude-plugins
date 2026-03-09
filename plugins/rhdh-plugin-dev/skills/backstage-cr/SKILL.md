@@ -1,5 +1,5 @@
 ---
-name: Backstage Custom Resource
+name: backstage-custom-resource
 description: This skill should be used when the user asks to "create Backstage CR", "create RHDH custom resource", "configure rhdh-operator", "create Backstage manifest", "modify Backstage CR", "configure RHDH deployment", "add dynamic plugins to CR", "configure Backstage database", "set up Backstage route", "configure app-config for RHDH", "create rhdh.redhat.com/v1alpha Backstage", or mentions creating or modifying a Backstage Custom Resource for the rhdh-operator.
 ---
 

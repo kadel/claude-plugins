@@ -1,5 +1,5 @@
 ---
-name: RHDH Frontend Dynamic Plugin Bootstrap
+name: rhdh-frontend-dynamic-plugin-bootstrap
 description: This skill should be used when the user asks to "create RHDH frontend plugin", "bootstrap frontend dynamic plugin", "create UI plugin for RHDH", "new frontend plugin for Red Hat Developer Hub", "add entity card to RHDH", "create dynamic route", "add sidebar menu item", "configure mount points", "create theme plugin", or mentions creating frontend components, UI pages, entity cards, or visual customizations for Red Hat Developer Hub or RHDH. This skill is specifically for frontend plugins - for backend plugins, use the separate backend plugin skill.
 ---
 

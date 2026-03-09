@@ -1,5 +1,5 @@
 ---
-name: RHDH Context
+name: rhdh-context
 description: This skill should be used whenever the user mentions "RHDH", "Red Hat Developer Hub", or "Developer Hub" in any context — whether asking questions, developing plugins, debugging, deploying, or discussing architecture. It provides essential background context about what RHDH is, how it differs from vanilla Backstage, and key nuances that affect all RHDH-related work.
 version: 0.2.0
 ---

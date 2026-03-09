@@ -1,5 +1,5 @@
 ---
-name: Jira CLI Usage
+name: jira-cli-usage
 description: This skill should be used when the user asks to "interact with Jira", "list Jira issues", "create Jira issue", "manage sprints", "view epics", "search issues", "move issue status", "assign issue", or mentions using the jira command-line tool for project management.
 version: 0.1.0
 ---
