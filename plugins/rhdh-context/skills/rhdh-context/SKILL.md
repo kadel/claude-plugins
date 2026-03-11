@@ -56,7 +56,7 @@ The dynamic plugin system is the most significant difference between RHDH and va
 RHDH decouples plugins from the core application. A **backend plugin manager** service scans a configured root directory (`dynamicPlugins.rootDirectory`) for dynamic plugin packages and loads them at startup.
 
 - **Backend plugins** — loaded as Node.js modules from the filesystem at startup
-- **Frontend plugins** — loaded as JavaScript bundles via [Scalprum](https://github.com/janus-idp/scalprum) (runtime module federation)
+- **Frontend plugins** — loaded as JavaScript bundles via [Scalprum](https://github.com/janus-idp/scalprum) (runtime module federation). Future versions of dynamic frontend plugins will be based on the Backstagenew frontend system.
 
 Plugins are installed and removed without rebuilding the application — only a pod restart is required.
 
@@ -68,16 +68,7 @@ Standard Backstage plugins are converted to dynamic plugins using the RHDH CLI:
 npx @red-hat-developer-hub/cli@latest plugin export
 ```
 
-This creates a **derived package** in `dist-dynamic/` with a `-dynamic` suffix. The export process:
-1. Builds the plugin
-2. Rewrites `@backstage/*` dependencies as peer dependencies (shared with the host)
-3. Bundles all non-Backstage dependencies into the package
-4. Auto-embeds packages with `-node` or `-common` suffixes
-5. Generates Scalprum configuration for frontend plugins
-
-Derived dynamic plugin packages should **not** be pushed to the public npm registry.
-
-### Plugin package sources
+### Plugin packaging
 
 Plugins in `dynamic-plugins.yaml` can be loaded from four sources:
 
@@ -135,10 +126,10 @@ RHDH pins a specific Backstage version per release. Plugins **must** be built ag
 
 | RHDH Version | Backstage Version | Status |
 |--------------|-------------------|--------|
-| 1.8 / next | 1.42.5 | Latest |
-| 1.7 | 1.39.1 | Current |
-| 1.6 | 1.36.1 | Supported |
-| 1.5 | 1.35.1 | Supported |
+| next | 1.48.3 | Development |
+| 1.9 | 1.45.3 | Latest |
+| 1.8 | 1.42.5 | Current |
+| 1.7 | 1.39.1 | Supported |
 
 Always confirm the target RHDH version before starting plugin development.
 
