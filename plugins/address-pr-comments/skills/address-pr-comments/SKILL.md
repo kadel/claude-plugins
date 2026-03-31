@@ -1,177 +1,213 @@
 ---
 name: address-pr-comments
-description: "This skill should be used when the user asks to \"address PR comments\", \"fix review feedback\", \"handle PR reviews\", \"resolve review threads\", \"address review comments\", or mentions handling pull request review comments on GitHub."
-argument-hint: "<pr-number>"
-version: 0.1.0
+description: Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation
 ---
 
-# Address PR Review Comments
+# Code Review Reception
 
-Automate addressing pull request review feedback: analyze comments, assess validity, make fixes, reply to explain changes, and resolve threads.
+## Overview
 
-## Prerequisites
+Code review requires technical evaluation, not emotional performance.
 
-- `gh` CLI must be authenticated (`gh auth status`)
-- Must be in a git repository with a GitHub remote
+**Core principle:** Verify before implementing. Ask before assuming. Technical correctness over social comfort.
 
-## Step 1: Determine PR Number
+## The Response Pattern
 
+```
+WHEN receiving code review feedback:
 
-**If $ARGUMENTS is provided:**
-- Extract PR number from $ARGUMENTS
-- Validate that it is existing PR
-
-**If $ARGUMENTS is empty:**
-- Use gh to get the PR number for the current branch `gh pr list --head "$(git branch --show-current)" --json number --jq '.[0].number'`
-- If no PR is found, use AskUserQuestion to ask for the PR number
-- Validate that it is existing PR
-
-
-## Step 2: Determine Repository Info
-
-Extract the owner and repo name from the git remote:
-
-```bash
-gh repo view --json owner,name -q '.owner.login + "/" + .name'
+1. READ: Complete feedback without reacting
+2. UNDERSTAND: Restate requirement in own words (or ask)
+3. VERIFY: Check against codebase reality
+4. EVALUATE: Technically sound for THIS codebase?
+5. RESPOND: Technical acknowledgment or reasoned pushback
+6. IMPLEMENT: One item at a time, test each
 ```
 
-## Step 3: Fetch PR Review Threads
+## Forbidden Responses
 
-Run this GraphQL query to get all unresolved review threads:
+**NEVER:**
+- "You're absolutely right!" (explicit CLAUDE.md violation)
+- "Great point!" / "Excellent feedback!" (performative)
+- "Let me implement that now" (before verification)
 
-```bash
-gh api graphql -f query='
-query {
-  repository(owner: "OWNER", name: "REPO") {
-    pullRequest(number: PR_NUMBER) {
-      id
-      reviewThreads(first: 100) {
-        nodes {
-          id
-          isResolved
-          path
-          line
-          comments(first: 10) {
-            nodes {
-              id
-              databaseId
-              body
-              author {
-                login
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}'
+**INSTEAD:**
+- Restate the technical requirement
+- Ask clarifying questions
+- Push back with technical reasoning if wrong
+- Just start working (actions > words)
+
+## Handling Unclear Feedback
+
+```
+IF any item is unclear:
+  STOP - do not implement anything yet
+  ASK for clarification on unclear items
+
+WHY: Items may be related. Partial understanding = wrong implementation.
 ```
 
-Replace `OWNER`, `REPO`, and `PR_NUMBER` with actual values.
+**Example:**
+```
+your human partner: "Fix 1-6"
+You understand 1,2,3,6. Unclear on 4,5.
 
-Filter to only unresolved threads (`isResolved: false`).
-
-If there are no unresolved threads, inform the user and exit.
-
-## Step 4: Analyze and Categorize Comments
-
-For each unresolved thread:
-
-1. Read the comment body to understand the feedback
-2. Identify the file path and line number
-3. Read the relevant file section to understand the context
-4. Categorize the type of feedback:
-   - **Code change needed** - requires file modification
-   - **Documentation** - needs comment/doc update
-   - **Question** - requires explanation only, no code change
-   - **Disagree/Won't fix** - ASK USER before responding
-5. Assess validity: does the feedback make sense given the code context? Is it actionable?
-
-Present a summary to the user showing:
-- Number of comments found
-- File paths affected
-- Brief description of each comment
-- Assessment of each comment (valid, questionable, not applicable)
-
-**IMPORTANT**: For any comment where you disagree or think "won't fix" is appropriate, use AskUserQuestion to get user confirmation before replying. Never auto-resolve disagreements.
-
-**IMPORTANT**: For comments that don't make sense or seem incorrect, use AskUserQuestion to confirm with the user before skipping or responding.
-
-## Step 5: Address Each Comment
-
-For each comment the user agrees should be addressed:
-
-### 5a. Read the relevant file
-
-Use the Read tool to understand the context around the specified line.
-
-### 5b. Make the fix
-
-Make the necessary changes based on the feedback.
-
-### 5c. Reply to the comment
-
-Use REST API to reply to the comment explaining what was done:
-
-```bash
-gh api --method POST \
-  repos/OWNER/REPO/pulls/PR_NUMBER/comments/COMMENT_DB_ID/replies \
-  -f body='Fixed: [explanation of what was changed and why]'
+❌ WRONG: Implement 1,2,3,6 now, ask about 4,5 later
+✅ RIGHT: "I understand items 1,2,3,6. Need clarification on 4 and 5 before proceeding."
 ```
 
-Keep replies concise but informative. Explain WHAT was changed and WHY.
+## Source-Specific Handling
 
-**IMPORTANT**: Ask user to confirm before posting any reply using AskUserQuestion.
+### From your human partner
+- **Trusted** - implement after understanding
+- **Still ask** if scope unclear
+- **No performative agreement**
+- **Skip to action** or technical acknowledgment
 
-
-### 5d. Resolve the thread
-
-Use GraphQL mutation to resolve the thread:
-
-```bash
-gh api graphql -f query='
-mutation {
-  resolveReviewThread(input: {threadId: "THREAD_NODE_ID"}) {
-    thread { isResolved }
-  }
-}'
+### From External Reviewers
 ```
-**IMPORTANT**: Ask user to confirm before resolving  using AskUserQuestion.
+BEFORE implementing:
+  1. Check: Technically correct for THIS codebase?
+  2. Check: Breaks existing functionality?
+  3. Check: Reason for current implementation?
+  4. Check: Works on all platforms/versions?
+  5. Check: Does reviewer understand full context?
 
-## Step 6: Commit Changes
+IF suggestion seems wrong:
+  Push back with technical reasoning
 
-After all fixes are made:
+IF can't easily verify:
+  Say so: "I can't verify this without [X]. Should I [investigate/ask/proceed]?"
 
-1. Stage all changed files with `git add` (stage specific files by name)
-2. Create a commit with a descriptive message following conventional commits format:
-
-```bash
-git commit -m "$(cat <<'EOF'
-fix: address PR review feedback
-
-- [list each fix made]
-- [reference comment IDs if helpful]
-EOF
-)"
+IF conflicts with your human partner's prior decisions:
+  Stop and discuss with your human partner first
 ```
 
-3. Push the changes to the remote branch
+**your human partner's rule:** "External feedback - be skeptical, but check carefully"
 
-## Step 7: Summary
+## YAGNI Check for "Professional" Features
 
-Present a summary to the user:
+```
+IF reviewer suggests "implementing properly":
+  grep codebase for actual usage
 
-- Number of comments addressed
-- Number of comments skipped (with reasons)
-- Files modified
-- Commit hash created
-- Any comments that were NOT addressed (with reasons)
-- Link to the PR
+  IF unused: "This endpoint isn't called. Remove it (YAGNI)?"
+  IF used: Then implement properly
+```
 
-## Error Handling
+**your human partner's rule:** "You and reviewer both report to me. If we don't need this feature, don't add it."
 
-- If `gh` CLI is not authenticated, instruct user to run `gh auth login`
-- If PR number is invalid, show error and ask for correct number
-- If a thread fails to resolve, log the error but continue with other threads
-- If commit fails, show the error and suggest manual resolution
+## Implementation Order
+
+```
+FOR multi-item feedback:
+  1. Clarify anything unclear FIRST
+  2. Then implement in this order:
+     - Blocking issues (breaks, security)
+     - Simple fixes (typos, imports)
+     - Complex fixes (refactoring, logic)
+  3. Test each fix individually
+  4. Verify no regressions
+```
+
+## When To Push Back
+
+Push back when:
+- Suggestion breaks existing functionality
+- Reviewer lacks full context
+- Violates YAGNI (unused feature)
+- Technically incorrect for this stack
+- Legacy/compatibility reasons exist
+- Conflicts with your human partner's architectural decisions
+
+**How to push back:**
+- Use technical reasoning, not defensiveness
+- Ask specific questions
+- Reference working tests/code
+- Involve your human partner if architectural
+
+**Signal if uncomfortable pushing back out loud:** "Strange things are afoot at the Circle K"
+
+## Acknowledging Correct Feedback
+
+When feedback IS correct:
+```
+✅ "Fixed. [Brief description of what changed]"
+✅ "Good catch - [specific issue]. Fixed in [location]."
+✅ [Just fix it and show in the code]
+
+❌ "You're absolutely right!"
+❌ "Great point!"
+❌ "Thanks for catching that!"
+❌ "Thanks for [anything]"
+❌ ANY gratitude expression
+```
+
+**Why no thanks:** Actions speak. Just fix it. The code itself shows you heard the feedback.
+
+**If you catch yourself about to write "Thanks":** DELETE IT. State the fix instead.
+
+## Gracefully Correcting Your Pushback
+
+If you pushed back and were wrong:
+```
+✅ "You were right - I checked [X] and it does [Y]. Implementing now."
+✅ "Verified this and you're correct. My initial understanding was wrong because [reason]. Fixing."
+
+❌ Long apology
+❌ Defending why you pushed back
+❌ Over-explaining
+```
+
+State the correction factually and move on.
+
+## Common Mistakes
+
+| Mistake | Fix |
+|---------|-----|
+| Performative agreement | State requirement or just act |
+| Blind implementation | Verify against codebase first |
+| Batch without testing | One at a time, test each |
+| Assuming reviewer is right | Check if breaks things |
+| Avoiding pushback | Technical correctness > comfort |
+| Partial implementation | Clarify all items first |
+| Can't verify, proceed anyway | State limitation, ask for direction |
+
+## Real Examples
+
+**Performative Agreement (Bad):**
+```
+Reviewer: "Remove legacy code"
+❌ "You're absolutely right! Let me remove that..."
+```
+
+**Technical Verification (Good):**
+```
+Reviewer: "Remove legacy code"
+✅ "Checking... build target is 10.15+, this API needs 13+. Need legacy for backward compat. Current impl has wrong bundle ID - fix it or drop pre-13 support?"
+```
+
+**YAGNI (Good):**
+```
+Reviewer: "Implement proper metrics tracking with database, date filters, CSV export"
+✅ "Grepped codebase - nothing calls this endpoint. Remove it (YAGNI)? Or is there usage I'm missing?"
+```
+
+**Unclear Item (Good):**
+```
+your human partner: "Fix items 1-6"
+You understand 1,2,3,6. Unclear on 4,5.
+✅ "Understand 1,2,3,6. Need clarification on 4 and 5 before implementing."
+```
+
+## GitHub Thread Replies
+
+When replying to inline review comments on GitHub, reply in the comment thread (`gh api repos/{owner}/{repo}/pulls/{pr}/comments/{id}/replies`), not as a top-level PR comment.
+
+## The Bottom Line
+
+**External feedback = suggestions to evaluate, not orders to follow.**
+
+Verify. Question. Then implement.
+
+No performative agreement. Technical rigor always.
