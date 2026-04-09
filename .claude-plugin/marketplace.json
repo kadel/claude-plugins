@@ -121,6 +121,22 @@
       "category": "workflow",
       "tags": ["github", "pr", "review", "comments"],
       "strict": false
+    },
+    {
+      "name": "md-to-jira",
+      "source": "./plugins/md-to-jira",
+      "description": "Convert Markdown to Jira wiki markup syntax for use in Jira and Confluence.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Tomas Kral",
+        "email": "tomas.kral@gmail.com"
+      },
+      "repository": "https://github.com/kadel/claude-plugins",
+      "license": "MIT",
+      "keywords": ["jira", "markdown", "confluence", "conversion", "wiki-markup"],
+      "category": "workflow",
+      "tags": ["jira", "markdown", "conversion", "atlassian"],
+      "strict": false
     }
   ]
 }

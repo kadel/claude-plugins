@@ -15,6 +15,7 @@ A collection of Claude Code plugins for development workflows.
 /plugin install rhdh-context@claude-plugins
 /plugin install review@claude-plugins
 /plugin install jira-utils@claude-plugins
+/plugin install md-to-jira@claude-plugins
 ```
 
 **Local development:**
@@ -24,6 +25,7 @@ claude --plugin-dir ./plugins/rhdh-plugin-dev
 claude --plugin-dir ./plugins/rhdh-context
 claude --plugin-dir ./plugins/review
 claude --plugin-dir ./plugins/jira-utils
+claude --plugin-dir ./plugins/md-to-jira
 ```
 
 ### Install individual skills
@@ -40,6 +42,7 @@ npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugi
 npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/rhdh-context/skills/rhdh-context
 npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/review/skills/documentation
 npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/git-commit/skills/git-commit
+npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/md-to-jira/skills/md-to-jira
 ```
 
 Update all installed skills:
@@ -61,6 +64,7 @@ npx @tomaskral/skillmanager@latest update --all
 | [rhdh-context](plugins/rhdh-context/skills/rhdh-context/SKILL.md) | RHDH product context — what it is, how it differs from Backstage, key nuances |
 | [documentation](plugins/review/skills/documentation/SKILL.md) | Review documentation changes in GitHub PRs for clarity and correctness |
 | [git-commit](plugins/git-commit/skills/git-commit/SKILL.md) | Create well-structured git commits with meaningful messages and attribution |
+| [md-to-jira](plugins/md-to-jira/skills/md-to-jira/SKILL.md) | Convert Markdown to Jira wiki markup syntax for Jira and Confluence |
 
 ## License
 
