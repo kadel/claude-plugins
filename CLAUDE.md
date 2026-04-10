@@ -74,9 +74,6 @@ Git commit workflow:
 ### jira-utils
 Jira CLI utilities for issue and project management:
 - **use-jira-cli**: Interact with Jira issues, sprints, epics using the `jira` CLI (non-interactive mode only)
-
-### md-to-jira
-Convert Markdown to Jira wiki markup syntax:
 - **md-to-jira**: Convert GitHub-flavored Markdown to Jira wiki markup for use in Jira and Confluence
 
 ## Testing Plugins Locally

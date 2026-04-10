@@ -1,6 +1,6 @@
 # Jira Utils
 
-Claude Code plugin for interacting with Jira using the Jira CLI (`jira`).
+Claude Code plugin for interacting with Jira using the Jira CLI (`jira`) and converting Markdown to Jira wiki markup.
 
 ## Skills
 
@@ -24,6 +24,24 @@ Use the Jira CLI to interact with Jira issues, sprints, epics, and projects from
 - Epic management (list epics, add issues to epics)
 - Board operations
 - Non-interactive output formats (`--plain`, `--raw`, `--csv`)
+
+### Markdown to Jira (`md-to-jira`)
+
+Convert GitHub-flavored Markdown to Jira wiki markup syntax for use in Jira and Confluence.
+
+**Trigger phrases:**
+- "Convert markdown to jira"
+- "Format for jira"
+- "Jira markup"
+- "md to jira"
+
+**What it covers:**
+- Headers, bold, italic, strikethrough
+- Code blocks and inline code
+- Links and images
+- Lists (ordered and unordered with nesting)
+- Tables
+- Blockquotes and horizontal rules
 
 ## Prerequisites
 

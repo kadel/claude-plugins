@@ -1,22 +1,14 @@
 ---
 name: md-to-jira
-description: Converts Markdown text to Jira wiki markup syntax. Use when the user asks to "convert markdown to jira", "format for jira", "jira markup", "md to jira", or has markdown content they want to paste into Jira/Confluence.
+description: Converts Markdown text to Jira wiki markup syntax. Use when the user asks to "convert markdown to jira", "format for jira", "jira markup", "md to jira", or has markdown content they want to paste into Jira/Confluence or use it with jira-cli.
 ---
 
 # Markdown to Jira Converter
 
 Convert GitHub-flavored Markdown to Jira wiki markup syntax directly in the conversation.
 
-## When to Use
-
-- User asks to convert markdown to Jira format
-- User wants to paste markdown content into Jira or Confluence
-- User mentions "jira markup", "jira wiki syntax", or "md to jira"
-- User has a markdown file they want reformatted for Jira
-
 ## Conversion Rules
 
-Apply these transformations in order. First extract and protect code blocks and inline code from further transformation, then apply all other rules, then restore code.
 
 ### 1. Code Blocks (extract first, restore last)
 

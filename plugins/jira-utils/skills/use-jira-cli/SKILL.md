@@ -1,6 +1,6 @@
 ---
-name: jira-cli-usage
-description: This skill should be used when the user asks to "interact with Jira", "list Jira issues", "create Jira issue", "manage sprints", "view epics", "search issues", "move issue status", "assign issue", or mentions using the jira command-line tool for project management.
+name: use-jira-cli
+description: This skill should be used when the user asks to interact with Jira from the command line, list Jira issues, create a Jira issue, manage sprints, view epics, search for issues, move an issue status, assign an issue, check their Jira tickets, work with the Jira CLI, or mentions using the jira command-line tool for project management tasks.
 version: 0.1.0
 ---
 
@@ -15,12 +15,14 @@ Use the Jira CLI (`jira`) to interact with Jira issues, sprints, epics, and proj
 
 ## Critical: Non-Interactive Mode Required
 
-**NEVER use interactive mode.** Always use one of these flags:
+**NEVER use interactive mode.** Always use one of these approaches:
 
-- `--plain` - Use for standard output (default choice)
-- `--raw` - Use when detailed/structured JSON data is needed for parsing
+- **For viewing/listing**: Use `--plain` or `--raw` flags
+  - `--plain` - Standard readable output (default choice)
+  - `--raw` - JSON output when structured data is needed for parsing
+- **For creating/editing**: Use `--no-input` flag along with all required fields
 
-Interactive mode requires user input and will hang. Always append `--plain` or `--raw` to commands.
+Interactive mode requires user input and will hang. Always use these flags to ensure commands complete without prompts.
 
 ## Quick Reference
 
@@ -45,12 +47,15 @@ Interactive mode requires user input and will hang. Always append `--plain` or `
 # View current user
 jira me
 
+# Use current user in commands via command substitution
+# Example: $(jira me) expands to your username
+jira issue assign ISSUE-123 $(jira me)
+
 # Server information
 jira serverinfo
 
 # Use specific project
 jira issue list -p PROJECT_KEY
-
 ```
 
 ## Workflow Instructions
@@ -140,7 +145,7 @@ jira sprint list --current --plain
 jira sprint list SPRINT_ID --plain
 
 # Filter sprint issues by assignee
-jira sprint list SPRINT_ID -a me --plain
+jira sprint list SPRINT_ID -a$(jira me) --plain
 
 # Get sprint data as JSON
 jira sprint list --current --raw
