@@ -1,5 +1,5 @@
 ---
-name: documentation
+name: review-documentation
 description: >
   This skill should be used when the user asks to "review documentation",
   "review docs in a PR", "check documentation quality", "review docs changes",

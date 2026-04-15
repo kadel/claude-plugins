@@ -10,7 +10,6 @@ A collection of Claude Code plugins for development workflows.
 ```bash
 /plugin marketplace add kadel/claude-plugins
 
-/plugin install worktree-feature@claude-plugins
 /plugin install rhdh-plugin-dev@claude-plugins
 /plugin install rhdh-context@claude-plugins
 /plugin install review@claude-plugins
@@ -19,7 +18,6 @@ A collection of Claude Code plugins for development workflows.
 
 **Local development:**
 ```bash
-claude --plugin-dir ./plugins/worktree-feature
 claude --plugin-dir ./plugins/rhdh-plugin-dev
 claude --plugin-dir ./plugins/rhdh-context
 claude --plugin-dir ./plugins/review
@@ -28,41 +26,32 @@ claude --plugin-dir ./plugins/jira-utils
 
 ### Install individual skills
 
-Install skills directly using [skillmanager](https://github.com/kadel/skillmanager):
+Install skills using [skills](https://github.com/vercel-labs/skills) CLI.
 
+**Interactive mode** — browse and select skills to install:
 ```bash
-npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/worktree-feature/skills/worktree-feature
-npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/jira-utils/skills/use-jira-cli
-npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/jira-utils/skills/md-to-jira
-npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/rhdh-plugin-dev/skills/rhdh-backend-dynamic-plugin
-npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/rhdh-plugin-dev/skills/rhdh-frontend-dynamic-plugin
-npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/rhdh-plugin-dev/skills/generate-frontend-wiring
-npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/rhdh-plugin-dev/skills/backstage-cr
-npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/rhdh-context/skills/rhdh-context
-npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/review/skills/documentation
-npx @tomaskral/skillmanager@latest install https://github.com/kadel/claude-plugins/tree/main/plugins/git-commit/skills/git-commit
+npx skills add kadel/claude-plugins
 ```
 
-Update all installed skills:
-
+**Install a specific skill:**
 ```bash
-npx @tomaskral/skillmanager@latest update --all
+npx skills add kadel/claude-plugins --skill use-jira-cli
 ```
 
 ## Skills
 
-| Skill | Description |
-|-------|-------------|
-| [worktree-feature](plugins/worktree-feature/skills/worktree-feature/SKILL.md) | Git worktree for isolated feature development |
-| [use-jira-cli](plugins/jira-utils/skills/use-jira-cli/SKILL.md) | Interact with Jira issues, sprints, and projects via CLI |
-| [md-to-jira](plugins/jira-utils/skills/md-to-jira/SKILL.md) | Convert Markdown to Jira wiki markup syntax for Jira and Confluence |
-| [rhdh-backend-dynamic-plugin](plugins/rhdh-plugin-dev/skills/rhdh-backend-dynamic-plugin/SKILL.md) | Bootstrap backend dynamic plugins for RHDH |
-| [rhdh-frontend-dynamic-plugin](plugins/rhdh-plugin-dev/skills/rhdh-frontend-dynamic-plugin/SKILL.md) | Bootstrap frontend dynamic plugins for RHDH |
-| [generate-frontend-wiring](plugins/rhdh-plugin-dev/skills/generate-frontend-wiring/SKILL.md) | Generate RHDH wiring config for Backstage frontend plugins |
-| [backstage-cr](plugins/rhdh-plugin-dev/skills/backstage-cr/SKILL.md) | Create and configure Backstage Custom Resources for rhdh-operator |
-| [rhdh-context](plugins/rhdh-context/skills/rhdh-context/SKILL.md) | RHDH product context — what it is, how it differs from Backstage, key nuances |
-| [documentation](plugins/review/skills/documentation/SKILL.md) | Review documentation changes in GitHub PRs for clarity and correctness |
-| [git-commit](plugins/git-commit/skills/git-commit/SKILL.md) | Create well-structured git commits with meaningful messages and attribution |
+| Skill | Description | Install |
+|-------|-------------|---------|
+| [use-jira-cli](plugins/jira-utils/skills/use-jira-cli/SKILL.md) | Interact with Jira issues, sprints, and projects via CLI | `npx skills add kadel/claude-plugins --skill use-jira-cli` |
+| [md-to-jira](plugins/jira-utils/skills/md-to-jira/SKILL.md) | Convert Markdown to Jira wiki markup syntax for Jira and Confluence | `npx skills add kadel/claude-plugins --skill md-to-jira` |
+| [rhdh-backend-dynamic-plugin](plugins/rhdh-plugin-dev/skills/rhdh-backend-dynamic-plugin/SKILL.md) | Bootstrap backend dynamic plugins for RHDH | `npx skills add kadel/claude-plugins --skill rhdh-backend-dynamic-plugin` |
+| [rhdh-frontend-dynamic-plugin](plugins/rhdh-plugin-dev/skills/rhdh-frontend-dynamic-plugin/SKILL.md) | Bootstrap frontend dynamic plugins for RHDH | `npx skills add kadel/claude-plugins --skill rhdh-frontend-dynamic-plugin` |
+| [generate-frontend-wiring](plugins/rhdh-plugin-dev/skills/generate-frontend-wiring/SKILL.md) | Generate RHDH wiring config for Backstage frontend plugins | `npx skills add kadel/claude-plugins --skill generate-frontend-wiring` |
+| [backstage-cr](plugins/rhdh-plugin-dev/skills/backstage-cr/SKILL.md) | Create and configure Backstage Custom Resources for rhdh-operator | `npx skills add kadel/claude-plugins --skill backstage-cr` |
+| [rhdh-catalog-index](plugins/rhdh-plugin-dev/skills/rhdh-catalog-index/SKILL.md) | Extract and inspect the RHDH plugin catalog index OCI image | `npx skills add kadel/claude-plugins --skill rhdh-catalog-index` |
+| [rhdh-context](plugins/rhdh-context/skills/rhdh-context/SKILL.md) | RHDH product context — what it is, how it differs from Backstage, key nuances | `npx skills add kadel/claude-plugins --skill rhdh-context` |
+| [documentation](plugins/review/skills/documentation/SKILL.md) | Review documentation changes in GitHub PRs for clarity and correctness | `npx skills add kadel/claude-plugins --skill documentation` |
+| [git-commit](plugins/git-commit/skills/git-commit/SKILL.md) | Create well-structured git commits with meaningful messages and attribution | `npx skills add kadel/claude-plugins --skill git-commit` |
 
 ## License
 

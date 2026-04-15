@@ -9,7 +9,6 @@ claude-plugins/
 ├── .claude-plugin/
 │   └── marketplace.json      # Plugin registry configuration
 ├── plugins/
-│   ├── worktree-feature/     # Git worktree workflow plugin
 │   ├── rhdh-plugin-dev/      # RHDH dynamic plugin development
 │   ├── rhdh-context/         # RHDH product context and nuances
 │   ├── review/               # Documentation review for PRs
@@ -49,9 +48,6 @@ skill-name/
 - Put working code in `examples/`
 
 ## Available Plugins
-
-### worktree-feature
-Git worktree workflow for isolated feature development.
 
 ### rhdh-plugin-dev
 Red Hat Developer Hub (RHDH) dynamic plugin development:
