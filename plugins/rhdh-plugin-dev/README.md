@@ -10,6 +10,7 @@ Claude Code plugin for Red Hat Developer Hub (RHDH) - the enterprise distributio
 | `rhdh-frontend-dynamic-plugin` | Bootstrap and develop frontend dynamic plugins (routes, entity cards, sidebar items, themes) |
 | `generate-frontend-wiring` | Analyze existing Backstage plugins and generate RHDH dynamic plugin wiring configuration |
 | `backstage-cr` | Create and modify Backstage Custom Resources for the rhdh-operator (v1alpha3/v1alpha4/v1alpha5) |
+| `rhdh-catalog-index` | Extract and inspect the RHDH plugin catalog index OCI image to discover available plugins, versions, and wiring configurations |
 
 ## Resources
 
