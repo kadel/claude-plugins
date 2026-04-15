@@ -14,6 +14,7 @@ A collection of Claude Code plugins for development workflows.
 /plugin install rhdh-context@claude-plugins
 /plugin install review@claude-plugins
 /plugin install jira-utils@claude-plugins
+/plugin install ghostty@claude-plugins
 ```
 
 **Local development:**
@@ -22,6 +23,7 @@ claude --plugin-dir ./plugins/rhdh-plugin-dev
 claude --plugin-dir ./plugins/rhdh-context
 claude --plugin-dir ./plugins/review
 claude --plugin-dir ./plugins/jira-utils
+claude --plugin-dir ./plugins/ghostty
 ```
 
 ### Install individual skills
@@ -52,6 +54,7 @@ npx skills add kadel/claude-plugins --skill use-jira-cli
 | [rhdh-context](plugins/rhdh-context/skills/rhdh-context/SKILL.md) | RHDH product context — what it is, how it differs from Backstage, key nuances | `npx skills add kadel/claude-plugins --skill rhdh-context` |
 | [documentation](plugins/review/skills/documentation/SKILL.md) | Review documentation changes in GitHub PRs for clarity and correctness | `npx skills add kadel/claude-plugins --skill documentation` |
 | [git-commit](plugins/git-commit/skills/git-commit/SKILL.md) | Create well-structured git commits with meaningful messages and attribution | `npx skills add kadel/claude-plugins --skill git-commit` |
+| [ghostty-applescript](plugins/ghostty/skills/ghostty-applescript/SKILL.md) | Control Ghostty terminal via AppleScript — open splits, render markdown with glow | `npx skills add kadel/claude-plugins --skill ghostty-applescript` |
 
 ## License
 
