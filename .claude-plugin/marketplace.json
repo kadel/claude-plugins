@@ -107,6 +107,22 @@
       "strict": false
     },
     {
+      "name": "gws",
+      "source": "./plugins/gws",
+      "description": "Interact with Google Workspace services (Gmail, Docs, Sheets, Drive) using the gws CLI.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Tomas Kral",
+        "email": "tomas.kral@gmail.com"
+      },
+      "repository": "https://github.com/kadel/claude-plugins",
+      "license": "MIT",
+      "keywords": ["google-workspace", "gmail", "docs", "sheets", "drive", "gws", "cli"],
+      "category": "productivity",
+      "tags": ["google", "workspace", "email", "documents", "spreadsheets"],
+      "strict": false
+    },
+    {
       "name": "address-pr-comments",
       "source": "./plugins/address-pr-comments",
       "description": "Address GitHub PR review comments: assess validity, make fixes, reply, resolve threads, and commit changes.",

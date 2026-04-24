@@ -14,6 +14,7 @@ claude-plugins/
 │   ├── review/               # Documentation review for PRs
 │   ├── git-commit/           # Git commit workflow
 │   ├── jira-utils/           # Jira CLI utilities
+│   ├── gws/                  # Google Workspace CLI (Gmail, Docs, Sheets, Drive)
 │   └── md-to-jira/           # Markdown to Jira conversion
 ├── CLAUDE.md                 # This file
 └── README.md                 # User-facing documentation
@@ -72,6 +73,13 @@ Git commit workflow:
 Jira CLI utilities for issue and project management:
 - **use-jira-cli**: Interact with Jira issues, sprints, epics using the `jira` CLI (non-interactive mode only)
 - **md-to-jira**: Convert GitHub-flavored Markdown to Jira wiki markup for use in Jira and Confluence
+
+### gws
+Google Workspace CLI for Gmail, Docs, Sheets, and Drive:
+- **gws-gmail**: Send, read, triage, reply, forward, and watch emails
+- **gws-docs**: Create, read, and write Google Docs
+- **gws-sheets**: Read, append, create, and update Google Sheets
+- **gws-drive**: Upload, list, search, download, share files, manage permissions and shared drives
 
 ## Testing Plugins Locally
 
