@@ -75,11 +75,12 @@ Jira CLI utilities for issue and project management:
 - **md-to-jira**: Convert GitHub-flavored Markdown to Jira wiki markup for use in Jira and Confluence
 
 ### gws
-Google Workspace CLI for Gmail, Docs, Sheets, and Drive:
+Google Workspace CLI for Gmail, Docs, Sheets, Drive, and Calendar:
 - **gws-gmail**: Send, read, triage, reply, forward, and watch emails
 - **gws-docs**: Create, read, and write Google Docs
 - **gws-sheets**: Read, append, create, and update Google Sheets
 - **gws-drive**: Upload, list, search, download, share files, manage permissions and shared drives
+- **gws-calendar**: View agenda, create events, manage calendars, check free/busy
 
 ## Testing Plugins Locally
 

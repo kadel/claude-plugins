@@ -10,6 +10,7 @@ Claude Code plugin for interacting with Google Workspace services (Gmail, Docs, 
 | `gws-docs` | Create, read, and write Google Docs |
 | `gws-sheets` | Read, append, create, and update Google Sheets |
 | `gws-drive` | Upload, list, search, download, share files, manage permissions and shared drives |
+| `gws-calendar` | View agenda, create events, manage calendars, check free/busy |
 
 ## Prerequisites
 
@@ -41,6 +42,12 @@ gws docs documents get --params '{"documentId": "DOC_ID"}'
 
 # Read spreadsheet data
 gws sheets +read --spreadsheet SHEET_ID --range "Sheet1!A1:D10"
+
+# View today's agenda
+gws calendar +agenda --today
+
+# Create a calendar event
+gws calendar +insert --summary 'Standup' --start '2026-06-17T09:00:00-07:00' --end '2026-06-17T09:30:00-07:00'
 
 # Upload a file to Drive
 gws drive +upload ./report.pdf
