@@ -5,6 +5,9 @@ description: >
   note organization, where to put notes, or needs context about how
   the Obsidian vault is organized.
 version: 0.1.0
+allowed-tools:
+  - Bash(obsidian vault*)
+  - Bash(obsidian read*)
 ---
 
 # Obsidian Notes — Understanding the Vault

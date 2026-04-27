@@ -5,6 +5,9 @@ description: >
   maintain the knowledge base, or mentions knowledge base operations
   in the Obsidian vault.
 version: 0.3.0
+allowed-tools:
+  - Bash(obsidian vault*)
+  - Bash(obsidian read*)
 ---
 
 # Obsidian Knowledge Base

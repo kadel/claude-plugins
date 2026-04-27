@@ -142,7 +142,7 @@
       "name": "obsidian",
       "source": "./plugins/obsidian",
       "description": "Work with Obsidian vaults — CLI reference, vault organization context, and LLM-maintained knowledge base.",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "author": {
         "name": "Tomas Kral",
         "email": "tomas.kral@gmail.com"
