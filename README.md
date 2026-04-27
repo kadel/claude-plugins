@@ -15,6 +15,9 @@ A collection of Claude Code plugins for development workflows.
 /plugin install review@claude-plugins
 /plugin install jira-utils@claude-plugins
 /plugin install ghostty@claude-plugins
+/plugin install gws@claude-plugins
+/plugin install address-pr-comments@claude-plugins
+/plugin install obsidian@claude-plugins
 ```
 
 **Local development:**
@@ -24,6 +27,9 @@ claude --plugin-dir ./plugins/rhdh-context
 claude --plugin-dir ./plugins/review
 claude --plugin-dir ./plugins/jira-utils
 claude --plugin-dir ./plugins/ghostty
+claude --plugin-dir ./plugins/gws
+claude --plugin-dir ./plugins/address-pr-comments
+claude --plugin-dir ./plugins/obsidian
 ```
 
 ### Install individual skills
@@ -55,6 +61,15 @@ npx skills add kadel/claude-plugins --skill use-jira-cli
 | [documentation](plugins/review/skills/documentation/SKILL.md) | Review documentation changes in GitHub PRs for clarity and correctness | `npx skills add kadel/claude-plugins --skill documentation` |
 | [git-commit](plugins/git-commit/skills/git-commit/SKILL.md) | Create well-structured git commits with meaningful messages and attribution | `npx skills add kadel/claude-plugins --skill git-commit` |
 | [ghostty-applescript](plugins/ghostty/skills/ghostty-applescript/SKILL.md) | Control Ghostty terminal via AppleScript — open splits, render markdown with glow | `npx skills add kadel/claude-plugins --skill ghostty-applescript` |
+| [gws-gmail](plugins/gws/skills/gws-gmail/SKILL.md) | Send, read, triage, reply, forward, and watch emails | `npx skills add kadel/claude-plugins --skill gws-gmail` |
+| [gws-docs](plugins/gws/skills/gws-docs/SKILL.md) | Create, read, and write Google Docs | `npx skills add kadel/claude-plugins --skill gws-docs` |
+| [gws-sheets](plugins/gws/skills/gws-sheets/SKILL.md) | Read, append, create, and update Google Sheets | `npx skills add kadel/claude-plugins --skill gws-sheets` |
+| [gws-drive](plugins/gws/skills/gws-drive/SKILL.md) | Upload, list, search, download, share files and manage permissions | `npx skills add kadel/claude-plugins --skill gws-drive` |
+| [gws-calendar](plugins/gws/skills/gws-calendar/SKILL.md) | View agenda, create events, manage calendars, check free/busy | `npx skills add kadel/claude-plugins --skill gws-calendar` |
+| [address-pr-comments](plugins/address-pr-comments/skills/address-pr-comments/SKILL.md) | Address GitHub PR review comments — assess, fix, reply, resolve | `npx skills add kadel/claude-plugins --skill address-pr-comments` |
+| [obsidian-cli](plugins/obsidian/skills/obsidian-cli/SKILL.md) | Obsidian CLI reference — notes, tags, tasks, properties, plugins, sync | `npx skills add kadel/claude-plugins --skill obsidian-cli` |
+| [obsidian-notes](plugins/obsidian/skills/obsidian-notes/SKILL.md) | Vault organization context — reads organization docs from the vault | `npx skills add kadel/claude-plugins --skill obsidian-notes` |
+| [obsidian-knowledge-base](plugins/obsidian/skills/obsidian-knowledge-base/SKILL.md) | LLM-maintained knowledge base — reads conventions from the vault | `npx skills add kadel/claude-plugins --skill obsidian-knowledge-base` |
 
 ## License
 

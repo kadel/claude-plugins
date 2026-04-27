@@ -9,13 +9,15 @@ claude-plugins/
 ├── .claude-plugin/
 │   └── marketplace.json      # Plugin registry configuration
 ├── plugins/
-│   ├── rhdh-plugin-dev/      # RHDH dynamic plugin development
-│   ├── rhdh-context/         # RHDH product context and nuances
-│   ├── review/               # Documentation review for PRs
+│   ├── address-pr-comments/  # Address GitHub PR review comments
+│   ├── ghostty/              # Ghostty terminal control via AppleScript
 │   ├── git-commit/           # Git commit workflow
-│   ├── jira-utils/           # Jira CLI utilities
 │   ├── gws/                  # Google Workspace CLI (Gmail, Docs, Sheets, Drive)
-│   └── md-to-jira/           # Markdown to Jira conversion
+│   ├── jira-utils/           # Jira CLI utilities
+│   ├── obsidian/             # Obsidian vault — CLI, notes, knowledge base
+│   ├── review/               # Documentation review for PRs
+│   ├── rhdh-context/         # RHDH product context and nuances
+│   └── rhdh-plugin-dev/      # RHDH dynamic plugin development
 ├── CLAUDE.md                 # This file
 └── README.md                 # User-facing documentation
 ```
@@ -50,6 +52,14 @@ skill-name/
 
 ## Available Plugins
 
+### address-pr-comments
+Address GitHub PR review comments:
+- **address-pr-comments**: Assess validity of review comments, make fixes, reply, resolve threads, and commit changes
+
+### ghostty
+Ghostty terminal control via AppleScript:
+- **ghostty-applescript**: Open splits, render markdown with glow, and send commands to terminal panes
+
 ### rhdh-plugin-dev
 Red Hat Developer Hub (RHDH) dynamic plugin development:
 - **rhdh-backend-dynamic-plugin**: Backend plugins, scaffolder actions, processors
@@ -81,6 +91,12 @@ Google Workspace CLI for Gmail, Docs, Sheets, Drive, and Calendar:
 - **gws-sheets**: Read, append, create, and update Google Sheets
 - **gws-drive**: Upload, list, search, download, share files, manage permissions and shared drives
 - **gws-calendar**: View agenda, create events, manage calendars, check free/busy
+
+### obsidian
+Obsidian vault — CLI, notes, knowledge base:
+- **obsidian-cli**: Create, read, search, and manage notes, tags, properties, tasks, daily notes, plugins, sync, and more
+- **obsidian-notes**: Understand vault organization and work with notes — references vault's own organization docs
+- **obsidian-knowledge-base**: LLM-maintained knowledge base — references vault's `Knowledge Base.md` for all conventions and workflows
 
 ## Testing Plugins Locally
 

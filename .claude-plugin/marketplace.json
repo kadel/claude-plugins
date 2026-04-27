@@ -137,6 +137,22 @@
       "category": "workflow",
       "tags": ["github", "pr", "review", "comments"],
       "strict": false
+    },
+    {
+      "name": "obsidian",
+      "source": "./plugins/obsidian",
+      "description": "Work with Obsidian vaults — CLI reference, vault organization context, and LLM-maintained knowledge base.",
+      "version": "0.2.0",
+      "author": {
+        "name": "Tomas Kral",
+        "email": "tomas.kral@gmail.com"
+      },
+      "repository": "https://github.com/kadel/claude-plugins",
+      "license": "MIT",
+      "keywords": ["obsidian", "notes", "vault", "knowledge-base", "markdown", "cli"],
+      "category": "productivity",
+      "tags": ["obsidian", "notes", "vault", "knowledge-management"],
+      "strict": false
     }
   ]
 }
