@@ -1,0 +1,21 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: claude-plugins
+  title: Claude Code Plugins
+  description: Collection of Claude Code plugins that extend Claude's capabilities with specialized workflows and domain knowledge.
+  annotations:
+    github.com/project-slug: kadel/claude-plugins
+    backstage.io/source-location: url:https://github.com/kadel/claude-plugins
+  tags:
+    - claude-code
+    - plugins
+    - developer-tools
+  links:
+    - url: https://github.com/kadel/claude-plugins
+      title: Repository
+      icon: github
+spec:
+  type: library
+  lifecycle: experimental
+  owner: user:tomas.kral
