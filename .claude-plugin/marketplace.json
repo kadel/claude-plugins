@@ -139,6 +139,22 @@
       "strict": false
     },
     {
+      "name": "grill-me",
+      "source": "./plugins/grill-me",
+      "description": "Stress-test plans and designs through relentless interviewing. Walks each branch of the decision tree one question at a time.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Tomas Kral",
+        "email": "tomas.kral@gmail.com"
+      },
+      "repository": "https://github.com/kadel/claude-plugins",
+      "license": "MIT",
+      "keywords": ["interview", "design-review", "planning", "stress-test"],
+      "category": "productivity",
+      "tags": ["planning", "design", "review", "interview"],
+      "strict": false
+    },
+    {
       "name": "obsidian",
       "source": "./plugins/obsidian",
       "description": "Work with Obsidian vaults — CLI reference, vault organization context, and LLM-maintained knowledge base.",

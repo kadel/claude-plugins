@@ -12,6 +12,7 @@ claude-plugins/
 │   ├── address-pr-comments/  # Address GitHub PR review comments
 │   ├── ghostty/              # Ghostty terminal control via AppleScript
 │   ├── git-commit/           # Git commit workflow
+│   ├── grill-me/             # Stress-test plans and designs
 │   ├── gws/                  # Google Workspace CLI (Gmail, Docs, Sheets, Drive)
 │   ├── jira-utils/           # Jira CLI utilities
 │   ├── obsidian/             # Obsidian vault — CLI, notes, knowledge base
@@ -74,6 +75,10 @@ RHDH product context and background knowledge:
 ### review
 Documentation review for pull requests:
 - **documentation**: Review documentation changes in GitHub PRs for clarity and technical correctness
+
+### grill-me
+Stress-test plans and designs through relentless interviewing:
+- **/grill-me**: Walk each branch of the decision tree one question at a time, providing recommended answers
 
 ### git-commit
 Git commit workflow:
