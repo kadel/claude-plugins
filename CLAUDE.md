@@ -18,7 +18,8 @@ claude-plugins/
 │   ├── obsidian/             # Obsidian vault — CLI, notes, knowledge base
 │   ├── review/               # Documentation review for PRs
 │   ├── rhdh-context/         # RHDH product context and nuances
-│   └── rhdh-plugin-dev/      # RHDH dynamic plugin development
+│   ├── rhdh-plugin-dev/      # RHDH dynamic plugin development
+│   └── skills/               # Skill creation best practices
 ├── CLAUDE.md                 # This file
 └── README.md                 # User-facing documentation
 ```
@@ -102,6 +103,10 @@ Obsidian vault — CLI, notes, knowledge base:
 - **obsidian-cli**: Create, read, search, and manage notes, tags, properties, tasks, daily notes, plugins, sync, and more
 - **obsidian-notes**: Understand vault organization and work with notes — references vault's own organization docs
 - **obsidian-knowledge-base**: LLM-maintained knowledge base — references vault's `Knowledge Base.md` for all conventions and workflows
+
+### skills
+Skill creation following official Anthropic best practices:
+- **create-skill**: Guide for creating effective skills with proper structure, descriptions, progressive disclosure, and testing
 
 ## Testing Plugins Locally
 
