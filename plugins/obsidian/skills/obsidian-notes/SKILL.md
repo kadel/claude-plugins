@@ -25,7 +25,8 @@ Determine the vault directory in this order:
 
 ## Reading Vault Guides
 
-Before working with notes, read the vault organization guides. These are the single source of truth for folder structure, placement rules, decision logic, frontmatter conventions, and metadata rules per note type. Always read them before creating or organizing notes.
+Before working with notes, read the vault organization guide from `Vault Organization.md`  - `Resources/Frontmatter Conventions.md`.
+These are the single source of truth for folder structure, placement rules, decision logic, frontmatter conventions, and metadata rules per note type.
+Always read them before creating or organizing notes.
 
-- `Vault Organization.md` (vault root)
-- `Resources/Frontmatter Conventions.md`
+If you have QMD command available use it to query or search notes. 

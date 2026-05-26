@@ -25,6 +25,7 @@ Determine the vault directory in this order:
 
 ## Reading Instructions
 
-Before performing any knowledge base operation, read the instructions from the vault. This is the single source of truth for all conventions, operations, frontmatter rules, page templates, and naming conventions. Always read it before executing any operation.
+Before performing any knowledge base operation, read the instructions from the vault saved in `Knowledge Base.md`.
+This is the single source of truth for all conventions, operations, frontmatter rules, page templates, and naming conventions. Always read it before executing any operation.
 
-- `Knowledge Base.md` (vault root)
+If you have QMD command available use it to query or search the knowledge base.
