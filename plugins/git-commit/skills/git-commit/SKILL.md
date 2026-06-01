@@ -2,6 +2,7 @@
 name: commit
 description: This skill should be used when the user asks to "commit changes", "create a commit", "commit my work", "stage and commit", "write commit message", "make a commit", or mentions committing code changes to a git repository.
 version: 0.1.0
+model: sonnet
 ---
 
 ## Purpose
