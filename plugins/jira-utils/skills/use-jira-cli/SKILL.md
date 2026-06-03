@@ -89,7 +89,9 @@ jira issue list --raw
 
 ### Creating Issues
 
-Always provide required fields to avoid interactive prompts:
+Always provide required fields to avoid interactive prompts.
+
+**Important: Use Markdown for descriptions and comments.** The `-b` flag accepts **Markdown**, not Jira wiki markup. Do not use Jira wiki syntax like `{code:yaml}`, `h2.`, or `{{monospace}}` — they will render as broken literal text. Use standard Markdown instead: `` ``` `` for code blocks, `##` for headings, and `` ` `` for inline code.
 
 ```bash
 # Create with required fields (use --no-input to prevent prompts)
