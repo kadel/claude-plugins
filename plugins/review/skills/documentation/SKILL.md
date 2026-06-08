@@ -53,37 +53,46 @@ Read the full file content when necessary to assess whether changes fit within t
 
 ## Review Categories
 
-### 1. Clarity
+### 1. User Empathy & Journey
 
-Evaluate how easy the documentation is to understand for the target audience.
+Evaluate whether the documentation actually helps the user achieve their goal.
+
+**Check for:**
+- Explaining the "Why" before the "How" (does the user know why they are doing this?)
+- Clear statement of prerequisites and required knowledge upfront
+- Clear identification of the target audience
+- Realistic and helpful examples that map to real-world use cases
+- Encouraging and inclusive tone
+
+### 2. Clarity & Scannability
+
+Evaluate how easy the documentation is to read and scan.
 
 **Check for:**
 - Ambiguous or vague language that could confuse readers
 - Overly complex sentences that should be simplified
-- Missing context or prerequisite knowledge assumptions
 - Jargon used without explanation
 - Unclear pronoun references (e.g., "it", "this" without a clear antecedent)
-- Logical flow and coherence between sections
 - Paragraph and section length (break up walls of text)
-- Effective use of headings to aid navigation
+- Effective use of headings, bullet points, and bold text to aid scannability
 
-### 2. Technical Accuracy
+### 3. Technical Accuracy (Active Verification)
 
-Evaluate whether the technical content is correct and reliable.
+Evaluate whether the technical content is correct and reliable. **Actively verify claims using tools when possible.**
 
 **Check for:**
-- Incorrect command syntax or API usage
+- Incorrect command syntax or API usage (verify against tool help output if available)
 - Wrong parameter names, types, or default values
 - Outdated version references or deprecated features
 - Code examples that would not compile or run
-- Incorrect file paths or URLs
+- Incorrect file paths or URLs (verify paths exist in the repository using `ls` or `find`)
 - Factual errors about how systems, libraries, or tools behave
 - Mismatched descriptions and code examples
 - Missing error handling or caveats in examples
 
 When uncertain about a technical claim, flag it as needing verification rather than marking it incorrect.
 
-### 3. Structure
+### 4. Structure
 
 Evaluate the organization and formatting of the documentation.
 
@@ -96,7 +105,7 @@ Evaluate the organization and formatting of the documentation.
 - Orphaned sections that don't connect to the document flow
 - Duplicate content within the same document or across related docs
 
-### 4. Grammar and Style
+### 5. Grammar and Style
 
 Evaluate the writing quality and consistency.
 
@@ -118,7 +127,7 @@ Assign a severity to each finding:
 
 ## Output Format
 
-Structure the review output as follows:
+Structure the review output as follows. After presenting the report, ask the user if they would like you to post this review directly to the PR as a comment using `gh pr review <PR_NUMBER> --comment --body "<report>"`.
 
 ```
 ## Documentation Review: PR #<number>
@@ -173,8 +182,9 @@ Structure the review output as follows:
 
 - Be specific in findings. Reference exact lines and quote the problematic text.
 - Provide actionable suggestions. Do not just point out problems; offer concrete fixes.
+- **Actively verify technical claims**: Use tools like `ls`, `grep`, or command help outputs to verify file paths, code snippets, and command syntax before flagging them.
 - Respect the author's voice. Do not rewrite entire sections to match a personal preference.
 - Focus on the diff. Avoid reviewing unchanged content unless it directly impacts the changes.
-- Consider the audience. Assess clarity relative to the document's intended readers.
+- Consider the audience. Assess clarity relative to the document's intended readers. **Always prioritize the user's journey and empathy.**
 - When a PR has no documentation files changed, state that clearly rather than forcing a review.
 - Group related findings together rather than reporting the same pattern multiple times.
