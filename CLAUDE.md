@@ -79,7 +79,7 @@ Documentation review for pull requests:
 
 ### grill-me
 Stress-test plans and designs through relentless interviewing:
-- **/grill-me**: Walk each branch of the decision tree one question at a time, providing recommended answers
+- **grill-me**: Walk each branch of the decision tree one question at a time, providing recommended answers
 
 ### git-commit
 Git commit workflow:

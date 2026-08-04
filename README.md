@@ -18,6 +18,7 @@ A collection of Claude Code plugins for development workflows.
 /plugin install gws@claude-plugins
 /plugin install address-pr-comments@claude-plugins
 /plugin install obsidian@claude-plugins
+/plugin install grill-me@claude-plugins
 ```
 
 **Local development:**
@@ -30,6 +31,7 @@ claude --plugin-dir ./plugins/ghostty
 claude --plugin-dir ./plugins/gws
 claude --plugin-dir ./plugins/address-pr-comments
 claude --plugin-dir ./plugins/obsidian
+claude --plugin-dir ./plugins/grill-me
 ```
 
 ### Install individual skills
@@ -70,6 +72,7 @@ npx skills add kadel/claude-plugins --skill use-jira-cli
 | [obsidian-cli](plugins/obsidian/skills/obsidian-cli/SKILL.md) | Obsidian CLI reference — notes, tags, tasks, properties, plugins, sync | `npx skills add kadel/claude-plugins --skill obsidian-cli` |
 | [obsidian-notes](plugins/obsidian/skills/obsidian-notes/SKILL.md) | Vault organization context — reads organization docs from the vault | `npx skills add kadel/claude-plugins --skill obsidian-notes` |
 | [obsidian-knowledge-base](plugins/obsidian/skills/obsidian-knowledge-base/SKILL.md) | LLM-maintained knowledge base — reads conventions from the vault | `npx skills add kadel/claude-plugins --skill obsidian-knowledge-base` |
+| [grill-me](plugins/grill-me/skills/grill-me/SKILL.md) | Stress-test plans and designs through relentless interviewing | `npx skills add kadel/claude-plugins --skill grill-me` |
 
 ## License
 
