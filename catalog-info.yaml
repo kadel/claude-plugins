@@ -2,17 +2,17 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: claude-plugins
-  title: Claude Code Plugins
-  description: Collection of Claude Code plugins that extend Claude's capabilities with specialized workflows and domain knowledge.
+  title: Agent Skills
+  description: A collection of agent-neutral skills managed with npx skills.
   annotations:
-    github.com/project-slug: kadel/claude-plugins
-    backstage.io/source-location: url:https://github.com/kadel/claude-plugins
+    github.com/project-slug: kadel/skills
+    backstage.io/source-location: url:https://github.com/kadel/skills
   tags:
-    - claude-code
-    - plugins
+    - agent-skills
+    - skills
     - developer-tools
   links:
-    - url: https://github.com/kadel/claude-plugins
+    - url: https://github.com/kadel/skills
       title: Repository
       icon: github
 spec:
