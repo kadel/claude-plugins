@@ -23,8 +23,9 @@ venv/
 # Logs
 *.log
 
-# Local plugin settings
+# Local settings and skill artifacts
 *.local.md
-
-# Claude Code local settings
 .claude/
+.agents/
+.codex/
+skills-lock.json
